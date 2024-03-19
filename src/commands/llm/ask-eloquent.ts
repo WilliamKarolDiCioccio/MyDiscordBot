@@ -19,8 +19,7 @@ module.exports = {
     const response = await ollama.chat({
       model: 'llama2',
       messages: [{ role: 'user', content: question }],
-    })
-
+    });
 
     await interaction.followUp(response.message.content);
   },
