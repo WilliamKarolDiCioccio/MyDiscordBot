@@ -7,7 +7,13 @@ services:
     networks:
       - mydiscordbot-net
     volumes:
-      - ollama-instance:/app/data
+      - ollama-instance:/root/.ollama
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
 
   app:
     build: .
