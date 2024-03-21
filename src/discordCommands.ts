@@ -40,4 +40,6 @@ export const refreshDiscordCommands = (TOKEN: string, CLIENT_ID: string) => {
   } catch (error) {
     console.error(error);
   }
+
+  return rest;
 };

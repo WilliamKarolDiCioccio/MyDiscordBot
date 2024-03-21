@@ -17,4 +17,4 @@ if (!CLIENT_ID) {
 }
 
 refreshDiscordCommands(TOKEN, CLIENT_ID);
-const client = createDiscordClient(TOKEN, CLIENT_ID);
+createDiscordClient(TOKEN, CLIENT_ID);

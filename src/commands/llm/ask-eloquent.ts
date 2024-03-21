@@ -5,7 +5,7 @@ const ollama = new Ollama({ host: "http://ollama:11434" });
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("ask-eloquent")
+    .setName("ask")
     .setDescription("Replies using the ollama llm model.")
     .addStringOption((option) =>
       option
@@ -14,7 +14,12 @@ module.exports = {
         .setRequired(true)
     ),
   async execute(interaction: any) {
-    const question = interaction.options.getString("question");
+    const question: string = interaction.options.getString("question");
+
+    if (!question) {
+      console.error("No question provided.");
+      return;
+    }
 
     await interaction.deferReply();
 
