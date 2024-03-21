@@ -1,0 +1,48 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Setup container acceleration",
+      "type": "shell",
+      "command": "python",
+      "options": {
+        "cwd": "${workspaceFolder}/scripts"
+      },
+      "args": ["setup_container_acceleration.py"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Docker Compose Build",
+      "type": "shell",
+      "command": "docker-compose",
+      "args": ["build"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Docker Compose Up",
+      "type": "shell",
+      "command": "docker-compose",
+      "args": ["up"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Docker Compose Down",
+      "type": "shell",
+      "command": "docker-compose",
+      "args": ["down"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
