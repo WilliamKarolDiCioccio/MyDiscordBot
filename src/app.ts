@@ -1,7 +1,6 @@
 import * as dotenv from 'dotenv';
 import { createDiscordClient } from "./discordInteraction";
 import { refreshDiscordCommands } from "./discordCommands";
-import { createMusicController } from './controllers/musicController';
 
 dotenv.config();
 
@@ -19,4 +18,3 @@ if (!CLIENT_ID) {
 
 refreshDiscordCommands(TOKEN, CLIENT_ID);
 const client = createDiscordClient(TOKEN, CLIENT_ID);
-const musicController = createMusicController(client);
