@@ -1,5 +1,7 @@
 import { SlashCommandBuilder } from "discord.js";
-import ollama from "ollama";
+import { Ollama } from "ollama";
+
+const ollama = new Ollama({ host: "http://ollama:11434" });
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -14,11 +16,11 @@ module.exports = {
   async execute(interaction: any) {
     const question = interaction.options.getString("question");
 
-    interaction.deferReply();
+    await interaction.deferReply();
 
     const response = await ollama.chat({
-      model: 'llama2',
-      messages: [{ role: 'user', content: question }],
+      model: "llama2",
+      messages: [{ role: "user", content: question }],
     });
 
     await interaction.followUp(response.message.content);

@@ -1,0 +1,26 @@
+version: "3"
+services:
+  ollama:
+    image: ollama/ollama
+    ports:
+      - "11434:11434"
+    networks:
+      - mydiscordbot-net
+    volumes:
+      - ollama-instance:/app/data
+
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - ollama
+    networks:
+      - mydiscordbot-net
+
+volumes:
+  ollama-instance:
+
+networks:
+  mydiscordbot-net:
+    driver: bridge
