@@ -1,6 +1,7 @@
 import { REST, Routes } from "discord.js";
 import fs from "fs";
 import path from "path";
+import { logger } from "./utils/logger";
 
 const commands = new Array();
 const foldersPath = path.join(__dirname, "commands");
@@ -14,13 +15,13 @@ for (const folder of commandFolders) {
 
   for (const file of commandFiles) {
     const filePath = path.join(commandsPath, file);
-    console.log(filePath);
+    logger.info(`Loading command from file ${filePath}`);
     const command = require(filePath);
     if ("data" in command && "execute" in command) {
       commands.push(command.data.toJSON());
     } else {
-      console.log(
-        `[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`
+      logger.warn(
+        `The command at ${filePath} is missing a required "data" or "execute" property.`
       );
     }
   }

@@ -1,5 +1,6 @@
 import { SlashCommandBuilder } from "discord.js";
 import { Ollama } from "ollama";
+import { logger } from "../../utils/logger";
 
 const ollama = new Ollama({ host: "http://ollama:11434" });
 
@@ -17,7 +18,7 @@ module.exports = {
     const question: string = interaction.options.getString("question");
 
     if (!question) {
-      console.error("No question provided.");
+      logger.error("No question provided.");
       return;
     }
 

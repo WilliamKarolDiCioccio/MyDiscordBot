@@ -1,5 +1,6 @@
 import { SlashCommandBuilder } from "discord.js";
 import * as math from "mathjs";
+import { logger } from "../../utils/logger";
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -15,7 +16,7 @@ module.exports = {
     const expression: string = interaction.options.getString("expression");
 
     if (!expression) {
-      console.error("No expression provided.");
+      logger.error("No expression provided.");
       return;
     }
 
