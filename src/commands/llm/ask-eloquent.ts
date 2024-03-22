@@ -1,8 +1,6 @@
 import { SlashCommandBuilder } from "discord.js";
-import { Ollama } from "ollama";
 import { logger } from "../../utils/logger";
-
-const ollama = new Ollama({ host: "http://ollama:11434" });
+import { ollama } from "../../utils/ollamaModel";
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -25,7 +23,7 @@ module.exports = {
     await interaction.deferReply();
 
     const response = await ollama.chat({
-      model: "llama2",
+      model: "eloquent:llama2",
       messages: [{ role: "user", content: question }],
     });
 
