@@ -1,4 +1,4 @@
-import { Client, GatewayIntentBits, Collection, Events } from "discord.js";
+import { Client, GatewayIntentBits, Events, ActivityType } from "discord.js";
 import fs from "fs";
 import path from "path";
 
@@ -41,6 +41,7 @@ export const createDiscordClient = (TOKEN: string, CLIENT_ID: string) => {
       return;
     } else {
       console.log(`Logged in as ${client.user.tag}!`);
+      client.user.setActivity('Hosting Eloquent!', { type: ActivityType.Custom });
     }
   });
 
