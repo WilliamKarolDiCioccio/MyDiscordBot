@@ -7,6 +7,7 @@ FROM node:${NODE_VERSION}-alpine
 
 ENV NODE_ENV production
 
+# Install pnpm.
 RUN --mount=type=cache,target=/root/.npm \
     npm install -g pnpm@${PNPM_VERSION}
 
@@ -20,6 +21,8 @@ RUN --mount=type=bind,source=package.json,target=package.json \
 USER node
 
 COPY . .
+
+COPY .env ./
 
 EXPOSE 8080
 
